@@ -23,8 +23,8 @@ StereoCamera::~StereoCamera()
 int StereoCamera::setup(CvSize imageSize){
     this->imageSize = imageSize;
 
-    captures[0] = cvCaptureFromCAM(CV_CAP_DSHOW + 0);
-    captures[1] = cvCaptureFromCAM(CV_CAP_DSHOW + 1);
+	captures[0] = cvCaptureFromCAM(CV_CAP_DSHOW + 0);
+	captures[1] = cvCaptureFromCAM(CV_CAP_DSHOW + 1);
 
     if( captures[0] && captures[1]){
 

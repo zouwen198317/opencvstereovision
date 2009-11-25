@@ -8,6 +8,7 @@ StereoVision::StereoVision(int imageWidth,int imageHeight)
     calibrationDone = false;
     imagesRectified[0] = imagesRectified[1] = imageDepth = imageDepthNormalized = 0;
     imageDepth = 0;
+	sampleCount = 0;
 }
 
 StereoVision::~StereoVision()
@@ -167,7 +168,7 @@ int StereoVision::calibrationEnd(){
     my2 = cvCreateMat( imageSize.height,imageSize.width, CV_32F );
 
     cvInitUndistortRectifyMap(&_M1,&_D1,&_R1,&_M1,mx1,my1);
-    cvInitUndistortRectifyMap(&_M2,&_D1,&_R2,&_M2,mx2,my2);
+    cvInitUndistortRectifyMap(&_M2,&_D2,&_R2,&_M2,mx2,my2);
 
     calibrationDone = true;
 

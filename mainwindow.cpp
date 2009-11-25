@@ -13,7 +13,9 @@ MainWindow::MainWindow(QWidget *parent)
     //UNCOMMENT ONE OF THE FOLLOWING LINES:
     //stereoVisionTest("../images/set1/",7,4);  //run test1
     //stereoVisionTest("../images/set2/",9,6);  //run test2
-    timer.start(50); //run program normally
+
+
+	timer.start(50); //run program normally
 }
 
 MainWindow::~MainWindow()
@@ -36,6 +38,11 @@ void MainWindow::on_pushButtonCalibrate_clicked()
 }
 
 void MainWindow::timeout(){
+	ui->progressBar->setMaximum( ui->spinBoxSampleCount->value());
+	ui->progressBar->setValue(vision->getSampleCount());
+
+
+
     if(!camera.ready){
         trace("Connecting to cameras...");
         if(StereoCamera::RESULT_OK != camera.setup(cvSize(640,480))){
@@ -81,8 +88,7 @@ void MainWindow::timeout(){
 
             }else{
                 ui->lcdNumber->display(sampleTimeout/1000);
-                ui->progressBar->setValue(vision->getSampleCount()/ui->spinBoxSampleCount->value());
-                sampleTimeout -= timer.interval();
+				sampleTimeout -= timer.interval();
 
             }
         }else{
