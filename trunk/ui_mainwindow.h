@@ -1,7 +1,7 @@
 /********************************************************************************
 ** Form generated from reading ui file 'mainwindow.ui'
 **
-** Created: Mon Jun 29 21:32:37 2009
+** Created: Fri Aug 14 10:27:02 2009
 **      by: Qt User Interface Compiler version 4.5.1
 **
 ** WARNING! All changes made in this file will be lost when recompiling ui file!
@@ -130,6 +130,7 @@ public:
         progressBar = new QProgressBar(centralWidget);
         progressBar->setObjectName(QString::fromUtf8("progressBar"));
         progressBar->setGeometry(QRect(210, 90, 311, 23));
+        progressBar->setMaximum(10);
         progressBar->setValue(0);
         lcdNumber = new QLCDNumber(centralWidget);
         lcdNumber->setObjectName(QString::fromUtf8("lcdNumber"));
@@ -159,6 +160,7 @@ public:
         pushButtonLoad->setText(QApplication::translate("MainWindow", "Load", 0, QApplication::UnicodeUTF8));
         pushButtonSave->setText(QApplication::translate("MainWindow", "Save", 0, QApplication::UnicodeUTF8));
         labelSampleTimeout->setText(QApplication::translate("MainWindow", "Seconds till next sample:", 0, QApplication::UnicodeUTF8));
+        progressBar->setFormat(QApplication::translate("MainWindow", "%v of %m Calibration Samples Taken", 0, QApplication::UnicodeUTF8));
         Q_UNUSED(MainWindow);
     } // retranslateUi
 
