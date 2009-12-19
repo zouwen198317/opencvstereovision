@@ -5,7 +5,6 @@
 #include "cxmisc.h"
 #include "cvaux.h"
 #include "highgui.h"
-#include "vector.h"
 
 
 

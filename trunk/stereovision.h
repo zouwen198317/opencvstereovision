@@ -1,11 +1,14 @@
 #ifndef STEREOVISION_H
 #define STEREOVISION_H
 
+
 #include "cv.h"
 #include "cxmisc.h"
 #include "cvaux.h"
 #include "highgui.h"
-#include "vector.h"
+
+using namespace std;
+#include <vector>
 
 class StereoVision
 {
