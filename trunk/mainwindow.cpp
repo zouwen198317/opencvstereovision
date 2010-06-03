@@ -10,12 +10,10 @@ MainWindow::MainWindow(QWidget *parent)
     vision = new StereoVision(640,480);
     connect(&timer, SIGNAL(timeout()), this, SLOT(timeout()));
 
-    //UNCOMMENT ONE OF THE FOLLOWING LINES:
-    //stereoVisionTest("../images/set1/",7,4);  //run test1
-    //stereoVisionTest("../images/set2/",9,6);  //run test2
-
-
-	timer.start(50); //run program normally
+    //UNCOMMENT ONLY ONE OF THE FOLLOWING 3 LINES:
+    //stereoVisionTest("../images/set1/",7,4);  //run test1, using pre-saved stereo images
+    //stereoVisionTest("../images/set2/",9,6);  //run test2 using pre-saved stereo images
+    timer.start(50); //run program normally , using 2 USB cammeras
 }
 
 MainWindow::~MainWindow()
@@ -45,7 +43,7 @@ void MainWindow::timeout(){
 
     if(!camera.ready){
         trace("Connecting to cameras...");
-        if(StereoCamera::RESULT_OK != camera.setup(cvSize(640,480))){
+        if(RESULT_OK != camera.setup(cvSize(640,480))){
             trace("-FAILED");
         }else{
             trace("+OK");
@@ -57,7 +55,7 @@ void MainWindow::timeout(){
             ui->pushButtonCalibrate->setEnabled(true);
         };
     }else{
-        if(StereoCamera::RESULT_OK == camera.capture()){
+        if(RESULT_OK == camera.capture()){
             cvShowImage("left",camera.frames[0]);
             cvShowImage("right",camera.frames[1]);
         };
@@ -75,7 +73,7 @@ void MainWindow::timeout(){
 
                 int result = vision->calibrationAddSample(camera.getFramesGray(0),camera.getFramesGray(1));
 
-                if(StereoVision::RESULT_OK == result){
+                if(RESULT_OK == result){
                     trace("+OK");
                     if(vision->getSampleCount() >= ui->spinBoxSampleCount->value()){
                         vision->calibrationEnd();
@@ -126,7 +124,7 @@ void MainWindow::displayOutput(){
 void MainWindow::on_pushButtonLoad_clicked()
 {
     trace(tr("Loading calibration file [%1]...").arg(ui->lineEditFilename->text()));
-    if(StereoVision::RESULT_OK == vision->calibrationLoad(ui->lineEditFilename->text().toAscii())){
+    if(RESULT_OK == vision->calibrationLoad(ui->lineEditFilename->text().toAscii())){
         trace("+OK");
     }else{
         trace("-FAIL");
@@ -136,7 +134,7 @@ void MainWindow::on_pushButtonLoad_clicked()
 void MainWindow::on_pushButtonSave_clicked()
 {
     trace(tr("Saving calibration file [%1]...").arg(ui->lineEditFilename->text()));
-    if(StereoVision::RESULT_OK == vision->calibrationSave(ui->lineEditFilename->text().toAscii())){
+    if(RESULT_OK == vision->calibrationSave(ui->lineEditFilename->text().toAscii())){
         trace("+OK");
     }else{
         trace("-FAIL");

@@ -10,6 +10,10 @@
 using namespace std;
 #include <vector>
 
+
+#define RESULT_OK   0
+#define RESULT_FAIL 1
+
 class StereoVision
 {
 private:
@@ -37,9 +41,6 @@ public:
 
     CvMat* imagesRectified[2];
     CvMat  *imageDepth,*imageDepthNormalized;
-
-    static int const RESULT_OK = 0;
-    static int const RESULT_FAIL = 1;
 
     void calibrationStart(int cornersX,int cornersY);
     int calibrationAddSample(IplImage* imageLeft,IplImage* imageRight);

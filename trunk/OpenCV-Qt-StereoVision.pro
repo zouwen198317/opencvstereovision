@@ -5,14 +5,11 @@ TARGET = OpenCV-Qt-StereoCalibration
 TEMPLATE = app
 
 # OpenCV
-LIBS += C:\SDK\OpenCV\lib\cxcore.lib
-LIBS += C:\SDK\OpenCV\lib\cv.lib
-LIBS += C:\SDK\OpenCV\lib\cvaux.lib
-LIBS += C:\SDK\OpenCV\lib\highgui.lib
-INCLUDEPATH += C:\SDK\OpenCV\cxcore\include
-INCLUDEPATH += C:\SDK\OpenCV\cv\include
-INCLUDEPATH += C:\SDK\OpenCV\cvaux\include
-INCLUDEPATH += C:\SDK\OpenCV\otherlibs\highgui
+LIBS += C:\OpenCV2.0\bin\libcv200.dll
+LIBS += C:\OpenCV2.0\bin\libcxcore200.dll
+LIBS += C:\OpenCV2.0\bin\libcvaux200.dll
+LIBS += C:\OpenCV2.0\bin\libhighgui200.dll
+INCLUDEPATH += C:\OpenCV2.0\include\opencv
 SOURCES += main.cpp \
     mainwindow.cpp \
     stereovision.cpp \
