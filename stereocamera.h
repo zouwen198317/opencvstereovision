@@ -6,6 +6,8 @@
 #include "cvaux.h"
 #include "highgui.h"
 
+#define RESULT_OK   0
+#define RESULT_FAIL 1
 
 
 class StereoCamera
@@ -15,9 +17,6 @@ class StereoCamera
     CvSize imageSize;
 
 public:
-    static int const RESULT_OK = 0;
-    static int const RESULT_FAIL = 1;
-
     IplImage* frames[2];
     IplImage* framesGray[2];
 
